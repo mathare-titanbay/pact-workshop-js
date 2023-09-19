@@ -2,7 +2,6 @@ import type { PlaywrightTestConfig } from '@playwright/test'
 
 const config: PlaywrightTestConfig = {
   use: {
-    headless: false,
     trace: 'on',
     baseURL: 'http://localhost:3000/'
   },
@@ -11,7 +10,7 @@ const config: PlaywrightTestConfig = {
     url: 'http://localhost:3000/',
   },
   testDir: './tests',
-  reporter: 'html'
+  reporter: [['html', {open: 'never'}]]
 }
 
 export default config
