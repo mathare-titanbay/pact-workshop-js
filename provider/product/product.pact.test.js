@@ -7,7 +7,6 @@ const app = require('express')();
 const authMiddleware = require('../middleware/auth.middleware');
 app.use(authMiddleware);
 app.use(require('./product.routes'));
-const server = app.listen("8080");
 
 const opts = {
     logLevel: "INFO",
@@ -50,6 +49,20 @@ describe("Pact Verification", () => {
         Object.assign(opts, {
             pactUrls: ['../consumer/pacts/pact/FrontendWebsite-ProductService.json']
         })
+        const server = app.listen("8080");
+
+        return new Verifier(opts).verifyProvider().then(output => {
+            console.log(output);
+        }).finally(() => {
+            server.close();
+        });
+    })
+
+    it("validates the expectations of ProductService - Playwright pact", () => {
+        Object.assign(opts, {
+            pactUrls: ['../consumer/pacts/playwright/FrontendPW-ProductService.json']
+        })
+        const server = app.listen("8080");
 
         return new Verifier(opts).verifyProvider().then(output => {
             console.log(output);
