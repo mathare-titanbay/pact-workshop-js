@@ -12,7 +12,7 @@ const provider = new PactV3({
   provider: "ProductService",
   log: path.resolve(process.cwd(), "logs", "pact.log"),
   logLevel: "warn",
-  dir: path.resolve(process.cwd(), "pacts"),
+  dir: path.resolve(process.cwd(), "pacts/pact"),
   spec: SpecificationVersion.SPECIFICATION_VERSION_V2,
 });
 

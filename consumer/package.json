@@ -25,7 +25,7 @@
     "build": "react-scripts build",
     "test": "CI=true react-scripts test",
     "eject": "react-scripts eject",
-    "pretest:pact": "rimraf pacts/*.json",
+    "pretest:pact": "rimraf pacts/pact/*.json",
     "test:pact": "CI=true react-scripts test --testTimeout=30000 pact.spec.js",
     "pact:publish": "pact-broker publish ./pacts --consumer-app-version=\"$(npx --yes absolute-version)\" --auto-detect-version-properties --broker-base-url=http://localhost:8000 --broker-username pact_workshop --broker-password pact_workshop"
   },
