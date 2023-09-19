@@ -27,7 +27,9 @@
     "eject": "react-scripts eject",
     "pretest:pact": "rimraf pacts/pact/*.json",
     "test:pact": "CI=true react-scripts test --testTimeout=30000 pact.spec.js",
-    "pact:publish": "pact-broker publish ./pacts --consumer-app-version=\"$(npx --yes absolute-version)\" --auto-detect-version-properties --broker-base-url=http://localhost:8000 --broker-username pact_workshop --broker-password pact_workshop"
+    "pact:publish": "pact-broker publish ./pacts --consumer-app-version=\"$(npx --yes absolute-version)\" --auto-detect-version-properties --broker-base-url=http://localhost:8000 --broker-username pact_workshop --broker-password pact_workshop",
+    "pretest:pw": "rimraf pacts/playwright/*.json",
+    "test:pw": "npx playwright test"
   },
   "eslintConfig": {
     "extends": "react-app"

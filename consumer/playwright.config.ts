@@ -10,6 +10,7 @@ const config: PlaywrightTestConfig = {
   //   command: 'npm start',
   //   url: 'http://localhost:3000/',
   // },
+  testDir: './tests',
   reporter: 'html'
 }
 
