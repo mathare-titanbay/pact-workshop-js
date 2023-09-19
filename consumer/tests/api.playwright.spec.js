@@ -27,7 +27,7 @@ const productData = [
 
 test.describe("API Pact test", () => {
   test.describe("getting all products", () => {
-    test("products exists", async ({page}) => {
+    test("products exist", async ({page}, testInfo) => {
       
       await page.route(apiBaseUrl + '/products', async (route) => {
         route.fulfill({
@@ -37,7 +37,7 @@ test.describe("API Pact test", () => {
             "Content-Type": "application/json; charset=utf-8",
           },
         })
-        await transformPlaywrightMatchToPact(route, { pacticipant, provider })
+        await transformPlaywrightMatchToPact(route, testInfo, { pacticipant, provider })
         return
       })
 
@@ -46,7 +46,7 @@ test.describe("API Pact test", () => {
       await page.waitForTimeout(1000)
     })
   
-    test("no products exist", async({page}) => {
+    test("no products exist", async({page}, testInfo) => {
       await page.route(apiBaseUrl + '/products', async (route) => {
         route.fulfill({
           status: 200,
@@ -55,7 +55,7 @@ test.describe("API Pact test", () => {
             "Content-Type": "application/json; charset=utf-8",
           },
         })
-        await transformPlaywrightMatchToPact(route, { pacticipant, provider })
+        await transformPlaywrightMatchToPact(route, testInfo, { pacticipant, provider })
         return
       })
 
@@ -70,7 +70,7 @@ test.describe("API Pact test", () => {
   })
 
   test.describe("getting one product", () => {
-    test("ID 10 exists", async({page}) => {
+    test("ID 10 exists", async({page}, testInfo) => {
       await page.route(apiBaseUrl + '/product/10', async (route) => {
         route.fulfill({
           status: 200,
@@ -83,7 +83,7 @@ test.describe("API Pact test", () => {
             "Content-Type": "application/json; charset=utf-8",
           },
         })
-        await transformPlaywrightMatchToPact(route, { pacticipant, provider })
+        await transformPlaywrightMatchToPact(route, testInfo, { pacticipant, provider })
         return
       })
 
@@ -91,12 +91,12 @@ test.describe("API Pact test", () => {
       await page.waitForTimeout(1000)  
     })
 
-    test("product does not exist", async({page}) => {
+    test("product does not exist", async({page}, testInfo) => {
       await page.route(apiBaseUrl + '/product/11', async (route) => {
         route.fulfill({
           status: 404
         })
-        await transformPlaywrightMatchToPact(route, { pacticipant, provider })
+        await transformPlaywrightMatchToPact(route, testInfo, { pacticipant, provider })
         return
       })
 

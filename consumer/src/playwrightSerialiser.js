@@ -67,7 +67,7 @@ const readPactFileOrDefault = (filePath, defaultPact) => {
   return pact
 }
 
-export const transformPlaywrightMatchToPact = async (route, opts) => {
+export const transformPlaywrightMatchToPact = async (route, testInfo, opts) => {
   const { pacticipant, provider, keepDupeDescs } = opts
   const filePath = path.join('pacts/playwright', `${pacticipant}-${provider}.json`)
 
@@ -93,9 +93,11 @@ export const transformPlaywrightMatchToPact = async (route, opts) => {
 
   const matches = [
     {
-      description: `pw_${request.method()}_${url.pathname}_${resp?.status()}${
-        url.searchParams.toString() ? '_' + url.searchParams.toString() : ''
-      }`,
+      // description: `pw_${request.method()}_${url.pathname}_${resp?.status()}${
+      //   url.searchParams.toString() ? '_' + url.searchParams.toString() : ''
+      // }`,
+      description: testInfo.titlePath.slice(-2, -1).toString(),
+      providerState: testInfo.title,
       request: {
         method: route.request().method(),
         path: url.pathname,
