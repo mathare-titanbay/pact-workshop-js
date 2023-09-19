@@ -106,7 +106,7 @@ export const transformPlaywrightMatchToPact = async (route, opts) => {
       response: {
         status: resp?.status(),
         headers: resp?.headers() ? omit(resp?.headers(), [...AUTOGEN_HEADER_BLOCKLIST]) : {},
-        body: respBody ? JSON.parse(respBody?.toString()) : undefined
+        body: respBody.toString() != '' ? JSON.parse(respBody?.toString()) : undefined
       }
     }
   ]
