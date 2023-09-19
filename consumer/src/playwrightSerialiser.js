@@ -20,7 +20,9 @@ const AUTOGEN_HEADER_BLOCKLIST = [
   'accept-encoding',
   'accept-language',
   'date',
-  'x-powered-by'
+  'x-powered-by',
+  'access-control-allow-origin',
+  'content-length'
 ]
 
 const removeDuplicates = (pact) => {
