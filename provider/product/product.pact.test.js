@@ -17,8 +17,9 @@ describe("Pact Verification", () => {
             provider: "ProductService",
             providerVersion: "1.0.0",
             providerVersionTags: ["test"],
-            pactBrokerUrl :process.env.PACT_BROKER_BASE_URL || 'https://<your_broker_name>.pactflow.io',
-            pactBrokerToken: process.env.PACT_BROKER_TOKEN || 'pact_workshop',
+            // pactBrokerUrl :process.env.PACT_BROKER_BASE_URL || 'https://<your_broker_name>.pactflow.io',
+            // pactBrokerToken: process.env.PACT_BROKER_TOKEN || 'pact_workshop',
+            pactUrls: ['../consumer/pacts/FrontendWebsite-ProductService.json'],
             stateHandlers: {
                 "product with ID 10 exists": () => {
                     controller.repository.products = new Map([
