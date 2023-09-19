@@ -6,10 +6,10 @@ const config: PlaywrightTestConfig = {
     trace: 'on',
     baseURL: 'http://localhost:3000/'
   },
-  // webServer: {
-  //   command: 'npm start',
-  //   url: 'http://localhost:3000/',
-  // },
+  webServer: {
+    command: 'npm start',
+    url: 'http://localhost:3000/',
+  },
   testDir: './tests',
   reporter: 'html'
 }
