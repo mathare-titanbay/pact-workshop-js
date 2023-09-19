@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test'
 import { transformPlaywrightMatchToPact } from '../src/playwrightSerialiser'
 
-const pacticipant = 'FrontendPW'
+const consumer = 'FrontendPW'
 const provider = 'ProductService'
 const apiBaseUrl = 'http://localhost:8080'
 const productData = [
@@ -37,7 +37,7 @@ test.describe("API Pact test", () => {
             "Content-Type": "application/json; charset=utf-8",
           },
         })
-        await transformPlaywrightMatchToPact(route, testInfo, { pacticipant, provider })
+        await transformPlaywrightMatchToPact(route, testInfo, { consumer, provider })
         return
       })
 
@@ -55,7 +55,7 @@ test.describe("API Pact test", () => {
             "Content-Type": "application/json; charset=utf-8",
           },
         })
-        await transformPlaywrightMatchToPact(route, testInfo, { pacticipant, provider })
+        await transformPlaywrightMatchToPact(route, testInfo, { consumer, provider })
         return
       })
 
@@ -83,7 +83,7 @@ test.describe("API Pact test", () => {
             "Content-Type": "application/json; charset=utf-8",
           },
         })
-        await transformPlaywrightMatchToPact(route, testInfo, { pacticipant, provider })
+        await transformPlaywrightMatchToPact(route, testInfo, { consumer, provider })
         return
       })
 
@@ -96,7 +96,7 @@ test.describe("API Pact test", () => {
         route.fulfill({
           status: 404
         })
-        await transformPlaywrightMatchToPact(route, testInfo, { pacticipant, provider })
+        await transformPlaywrightMatchToPact(route, testInfo, { consumer, provider })
         return
       })
 

@@ -68,11 +68,11 @@ const readPactFileOrDefault = (filePath, defaultPact) => {
 }
 
 export const transformPlaywrightMatchToPact = async (route, testInfo, opts) => {
-  const { pacticipant, provider, keepDupeDescs } = opts
-  const filePath = path.join('pacts/playwright', `${pacticipant}-${provider}.json`)
+  const { consumer, provider, keepDupeDescs } = opts
+  const filePath = path.join('pacts/playwright', `${consumer}-${provider}.json`)
 
   const defaultPact = {
-    consumer: { name: pacticipant },
+    consumer: { name: consumer },
     provider: { name: provider },
     interactions: [],
     metadata: {
