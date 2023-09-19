@@ -28,3 +28,4 @@ pacts/
 logs/
 
 playwright-report/
+test-results/
