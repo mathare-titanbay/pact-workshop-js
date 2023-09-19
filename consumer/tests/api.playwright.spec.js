@@ -1,10 +1,29 @@
 import { test, expect } from '@playwright/test'
 import { transformPlaywrightMatchToPact } from '../src/playwrightSerialiser'
-import productData from '../src/productData.json'
 
 const pacticipant = 'FrontendPW'
 const provider = 'ProductService'
 const apiBaseUrl = 'http://localhost:8080'
+const productData = [
+  {
+      "id": "09",
+      "type": "CREDIT_CARD",
+      "name": "Gem Visa",
+      "version": "v1"
+  },
+  {
+      "id": "10",
+      "type": "CREDIT_CARD",
+      "name": "28 Degrees",
+      "version": "v1"
+  },
+  {
+      "id": "11",
+      "type": "PERSONAL_LOAN",
+      "name": "MyFlexiPay",
+      "version": "v2"
+  }
+]
 
 test.describe("API Pact test", () => {
   test.describe("getting all products", () => {
