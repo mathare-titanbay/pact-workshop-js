@@ -96,8 +96,8 @@ export const transformPlaywrightMatchToPact = async (route, testInfo, opts) => {
       // description: `pw_${request.method()}_${url.pathname}_${resp?.status()}${
       //   url.searchParams.toString() ? '_' + url.searchParams.toString() : ''
       // }`,
-      description: testInfo.titlePath.slice(-2, -1).toString(),
-      providerState: testInfo.title,
+      description: testInfo.title,
+      providerState: testInfo.titlePath.slice(-2, -1).toString(),
       request: {
         method: route.request().method(),
         path: url.pathname,

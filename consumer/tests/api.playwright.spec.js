@@ -26,8 +26,8 @@ const productData = [
 ]
 
 test.describe("API Pact test", () => {
-  test.describe("getting all products", () => {
-    test("products exist", async ({page}, testInfo) => {
+  test.describe("products exist", () => {
+    test("get all products", async ({page}, testInfo) => {
       
       await page.route(apiBaseUrl + '/products', async (route) => {
         route.fulfill({
@@ -45,8 +45,13 @@ test.describe("API Pact test", () => {
       await expect(page.locator('h1')).toBeVisible()
       await page.waitForTimeout(1000)
     })
+
+    // No auth token - how to send request without it & get Playwright to mock the response?
+    // Do I need to send the request directly with Playwright rather than interacting with the UI?
+  })
   
-    test("no products exist", async({page}, testInfo) => {
+  test.describe("no products exist", () => {
+    test("get all products", async({page}, testInfo) => {
       await page.route(apiBaseUrl + '/products', async (route) => {
         route.fulfill({
           status: 200,
@@ -64,13 +69,10 @@ test.describe("API Pact test", () => {
       await page.waitForTimeout(1000)  
 
     })
-
-    // No auth token - how to send request without it & get Playwright to mock the response?
-    // Do I need to send the request directly with Playwright rather than interacting with the UI?
   })
 
-  test.describe("getting one product", () => {
-    test("ID 10 exists", async({page}, testInfo) => {
+  test.describe("product with ID 10 exists", () => {
+    test("get product with ID 10", async({page}, testInfo) => {
       await page.route(apiBaseUrl + '/product/10', async (route) => {
         route.fulfill({
           status: 200,
@@ -91,7 +93,12 @@ test.describe("API Pact test", () => {
       await page.waitForTimeout(1000)  
     })
 
-    test("product does not exist", async({page}, testInfo) => {
+    // No auth token - how to send request without it & get Playwright to mock the response?
+    // Do I need to send the request directly with Playwright rather than interacting with the UI?
+  })
+
+  test.describe("product with ID 11 does not exist", () => {
+    test("get product with ID 11", async({page}, testInfo) => {
       await page.route(apiBaseUrl + '/product/11', async (route) => {
         route.fulfill({
           status: 404
@@ -104,7 +111,5 @@ test.describe("API Pact test", () => {
       await page.waitForTimeout(1000)  
     })
 
-    // No auth token - how to send request without it & get Playwright to mock the response?
-    // Do I need to send the request directly with Playwright rather than interacting with the UI?
   })
 })
