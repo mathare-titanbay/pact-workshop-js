@@ -9,7 +9,7 @@ app.use(authMiddleware);
 app.use(require('./product.routes'));
 
 const opts = {
-    logLevel: "INFO",
+    logLevel: "WARN",
     providerBaseUrl: "http://localhost:8080",
     provider: "ProductService",
     providerVersion: "1.0.0",
