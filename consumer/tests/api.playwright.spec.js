@@ -48,6 +48,7 @@ test.describe("API Pact test", () => {
 
       await page.goto('/')
       await expect(page.locator('h1')).toBeVisible()
+      await expect(page.locator('h1')).toHaveText("Products")
       await page.waitForTimeout(1000)
     })
 
@@ -71,6 +72,7 @@ test.describe("API Pact test", () => {
 
       await page.goto('/')
       await expect(page.locator('h1')).toBeVisible()
+      await expect(page.locator('h1')).toHaveText("Products")
       await page.waitForTimeout(1000)  
 
     })
@@ -95,6 +97,8 @@ test.describe("API Pact test", () => {
       })
 
       await page.goto('/products/10')
+      await expect(page.locator('h1')).toBeVisible()
+      await expect(page.locator('h1')).toHaveText("Products")
       await page.waitForTimeout(1000)  
     })
 
@@ -113,6 +117,8 @@ test.describe("API Pact test", () => {
       })
 
       await page.goto('/products/11')
+      await expect(page.locator('h1')).toBeVisible()
+      await expect(page.locator('h1')).toHaveText("Sad times :(")
       await page.waitForTimeout(1000)  
     })
 
