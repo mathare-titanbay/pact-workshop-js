@@ -51,7 +51,7 @@ test.describe("API Pact test", () => {
   })
   
   test.describe("no products exist", () => {
-    test("get all products", async({page}, testInfo) => {
+    test("get all products when none exist", async({page}, testInfo) => {
       await page.route(apiBaseUrl + '/products', async (route) => {
         route.fulfill({
           status: 200,
