@@ -8,9 +8,11 @@ const authMiddleware = require('../middleware/auth.middleware');
 app.use(authMiddleware);
 app.use(require('./product.routes'));
 
+const port = '3001'
+
 const opts = {
     logLevel: "WARN",
-    providerBaseUrl: "http://localhost:8080",
+    providerBaseUrl: "http://localhost:" + port,
     provider: "ProductService",
     providerVersion: "1.0.0",
     providerVersionTags: ["test"],
@@ -50,7 +52,7 @@ describe("Pact Verification", () => {
         Object.assign(opts, {
             pactUrls: ['../consumer/pacts/pact/FrontendWebsite-ProductService.json']
         })
-        const server = app.listen("8080");
+        const server = app.listen(port);
 
         return new Verifier(opts).verifyProvider().then(output => {
             console.log(output);
@@ -63,7 +65,7 @@ describe("Pact Verification", () => {
         Object.assign(opts, {
             pactUrls: ['../consumer/pacts/playwright/FrontendPW-ProductService.json']
         })
-        const server = app.listen("8080");
+        const server = app.listen(port);
 
         return new Verifier(opts).verifyProvider().then(output => {
             console.log(output);
