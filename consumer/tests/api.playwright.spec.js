@@ -25,6 +25,11 @@ const productData = [
   }
 ]
 
+// TODO:
+// Allow multiple interactions to be added for the same endpoint
+// Add matchers for pact interactions - are they needed?
+// Update Pact spec version to v4
+
 test.describe("API Pact test", () => {
   test.describe("products exist", () => {
     test("get all products", async ({page}, testInfo) => {
